@@ -1,0 +1,312 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "msysprovaImportDataFactoryTemplate"
+		},
+		"ls_migration_connectionString": {
+			"value": ""
+		},
+		"ls_my_italy_new_connectionString": {
+			"value": ""
+		},
+		"ls_raw_connectionString": {
+			"value": ""
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupA_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupB_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupC_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupX_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupY_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrix_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrixGroupB_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parProcedure": {
+			"value": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDestination": {
+			"value": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionOrder": {
+			"value": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupName": {
+			"value": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDropName": {
+			"value": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionConfigurationId": {
+			"value": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionNumber": {
+			"value": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupPlanId": {
+			"value": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPipelineName": {
+			"value": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parStartPipelineExecutionDate": {
+			"value": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPlanId": {
+			"value": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrixGroupX_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerParallelStop_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerStop_properties_typeProperties_scope": {
+			"value": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		}
+	}
+}

@@ -1,0 +1,5923 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "msysprovaImportDataFactoryTemplate"
+		},
+		"ls_migration_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_migration'"
+		},
+		"ls_my_italy_new_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_my_italy_new'"
+		},
+		"ls_raw_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_raw'"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupA_properties_pl_GroupA_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupA_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupB_properties_pl_GroupB_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupB_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupC_properties_pl_GroupC_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupC_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupX_properties_pl_GroupX_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupX_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerGroupY_properties_pl_GroupY_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerGroupY_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrix_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrixGroupB_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parProcedure": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Procedure"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDestination": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.Destination"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionOrder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionOrder"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDropName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.DropName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionConfigurationId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionConfigurationId"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionNumber": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.ExecutionNumber"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.GroupPlanId"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPipelineName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PipelineName"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parStartPipelineExecutionDate": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.StartPipelineExecutionDate"
+		},
+		"triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPlanId": {
+			"type": "string",
+			"defaultValue": "@triggerBody().event.data.PlanId"
+		},
+		"triggerMatrixGroupX_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerParallelStop_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		},
+		"triggerStop_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelineStart')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "GetLastRetryNumber",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT eh.RetryNumber as Retry \nFROM [dbo].[ExecutionConfiguration] ec\nINNER JOIN [dbo].[ExecutionHistory] eh ON ec.id = eh.ExecutionConfigurationId\nWHERE ec.ToBeExecuted = 1",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "ds_sqldb_migration",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": true
+						}
+					},
+					{
+						"name": "If Retry eq 0",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "GetLastRetryNumber",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(activity('GetLastRetryNumber').output.firstRow.Retry,0)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "Stored procedure create Execution Live Plan",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [
+										{
+											"activity": "sp_StartDate",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[sp_PopulateLiveExecutionPlan]"
+									},
+									"linkedServiceName": {
+										"referenceName": "ls_migration",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "Call Start",
+									"type": "WebActivity",
+									"dependsOn": [
+										{
+											"activity": "Create json message pipelineCompleted",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+										"method": "POST",
+										"headers": {
+											"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+										},
+										"body": {
+											"value": "@json(variables('msgPipelineCompleted'))",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "Create json message pipelineCompleted",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Stored procedure create Execution Live Plan",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "msgPipelineCompleted",
+										"value": {
+											"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": 0},\"dataVersion\":\"1.0\"}]')\n",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "sp_StartDate",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[sp_StartDate]"
+									},
+									"linkedServiceName": {
+										"referenceName": "ls_migration",
+										"type": "LinkedServiceReference"
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varStartFromId": {
+						"type": "String"
+					},
+					"varRetryNumber": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:24:16Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelineStartFrom')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Call Start",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "varStartFromId",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted \",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\":', variables('varStartFromId'),'},\"dataVersion\":\"1.0\"}]')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "varStartFromId",
+						"description": "Start from the id  plus 1",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_StartDate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Load Execution Parameters",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "varStartFromId",
+							"value": {
+								"value": "@string(activity('Load Execution Parameters').output.firstRow.StartExecutionFrom)",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "sp_StartDate",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_StartDate]"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Load Execution Parameters",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[sp_LoadParameters]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "ds_sqldb_migration",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varStartFromId": {
+						"type": "String"
+					},
+					"varExecutionConfigurationId": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:01:25Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelineStartParallel')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Call Start",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineParallelStarted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelineparallelstarted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "Cn9JDvMTyfWFqpHZVOWZIa9nbl9VJ//m8KW8z/zAWUA="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineParallelStarted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineParallelStarted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "SP Execution Parallel Live Plan",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineParallelStarted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineParallelStarted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": 0},\"dataVersion\":\"1.0\"}]')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "sp_StartDate",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_StartDateParallel]"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "SP Execution Parallel Live Plan",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_StartDate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_PopulateLiveParallelExecutionPlan]"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"variables": {
+					"varStartFromId": {
+						"type": "String"
+					},
+					"varRetryNumber": {
+						"type": "String"
+					},
+					"ParallelStop": {
+						"type": "String"
+					},
+					"msgPipelineParallelStarted": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Parallel"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:24:14Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelineStop')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "sp_StopEndDate",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_EndDate]"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:24:14Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelineStopParallel')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "sp_StopEndDateParallel",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_EndDateParallel]"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Parallel"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:24:14Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_GroupA')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "sp_DeleteDestinationTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "select * from @{pipeline().parameters.parProcedure}",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_my_italy_new",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_DeleteDestinationTable",
+						"description": "prova",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteTableName]",
+							"storedProcedureParameters": {
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					},
+					"selectTemp": {
+						"type": "String"
+					},
+					"ErrorTest": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:57:15Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_my_italy_new')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_GroupB')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupB_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "sp_DeleteDestinationTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "select * from @{pipeline().parameters.parProcedure}",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_my_italy_new",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_DeleteDestinationTable",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteTableName]",
+							"storedProcedureParameters": {
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					},
+					"ErrorTest": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T10:56:53Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_my_italy_new')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_GroupC')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupB_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "sp_DeleteDestinationTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "select * from @{pipeline().parameters.parProcedure}",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_my_italy_new",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_DeleteDestinationTable",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteTableName]",
+							"storedProcedureParameters": {
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:01:25Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_my_italy_new')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_GroupX')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "sp_DeleteDestinationTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "select * from @{pipeline().parameters.parProcedure}",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_my_italy_new",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedParallelStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineParalledCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelineparallelcompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "yPXiW6fv4JUzfw3i2dPiuoDmTz50pdb5krD8FddlySc="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineParallelCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineParalledCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineParallelCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineParallelCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"PipelineName\":\"',pipeline().parameters.parPipelineName,'\",\"Procedure\":\"',pipeline().parameters.parProcedure,'\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "sp_DeleteDestinationTable",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteTableName]",
+							"storedProcedureParameters": {
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"concurrency": 15,
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineParallelCompleted": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Parallel"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:14:10Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_my_italy_new')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_GroupY')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "sp_DeleteDestinationTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "select * from @{pipeline().parameters.parProcedure}",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_my_italy_new",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedParallelStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_DeleteDestinationTable",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteTableName]",
+							"storedProcedureParameters": {
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelineparallelcompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "yPXiW6fv4JUzfw3i2dPiuoDmTz50pdb5krD8FddlySc="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineParallelCompleted'))\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineParallelCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineParallelCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"PipelineName\":\"',pipeline().parameters.parPipelineName,'\",\"Procedure\":\"',pipeline().parameters.parProcedure,'\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineParallelCompleted": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Parallel"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:15:43Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_my_italy_new')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_Matrix_GroupA')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupB_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Delete Matrix data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "@concat('select * from ',pipeline().parameters.parProcedure,'(',pipeline().parameters.parExecutionConfigurationId,')')",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": "none"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Delete Matrix data",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteMatrixTableName]",
+							"storedProcedureParameters": {
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:03:44Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_Matrix_GroupB')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupB_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')\n",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Delete Matrix data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "@concat('select * from ',pipeline().parameters.parProcedure,'(',pipeline().parameters.parExecutionConfigurationId,')')",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": "none"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Delete Matrix data",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteMatrixTableName]",
+							"storedProcedureParameters": {
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"msgPipelineCompleted": {
+						"type": "String"
+					},
+					"varDropName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Sequential"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:03:44Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_Matrix_GroupX')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyData",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Delete Matrix data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"additionalColumns": [
+									{
+										"name": "ExecutionConfigurationId",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionConfigurationId",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "TimeStamp",
+										"value": {
+											"value": "@utcnow()",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "DropName",
+										"value": {
+											"value": "@pipeline().parameters.parDropName",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "ExecutionNumber",
+										"value": {
+											"value": "@pipeline().parameters.parExecutionNumber",
+											"type": "Expression"
+										}
+									},
+									{
+										"name": "PlanId",
+										"value": {
+											"value": "@pipeline().parameters.parPlanId",
+											"type": "Expression"
+										}
+									}
+								],
+								"sqlReaderQuery": {
+									"value": "@concat('select * from ',pipeline().parameters.parProcedure,'(',pipeline().parameters.parExecutionConfigurationId,')')",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false,
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": "none"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_sqldb_raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"DestinationTableName": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnSuccess",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "No",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_SetExecutionFailedStatus_Failed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "CopyData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_SetExecutionFailedStatus]",
+							"storedProcedureParameters": {
+								"parFailed": {
+									"value": "True",
+									"type": "Boolean"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "sp_UpdateLogEvents_OnFailed",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "sp_SetExecutionFailedStatus_Failed",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_UpdateLogEvents]",
+							"storedProcedureParameters": {
+								"CopyDuration": {
+									"value": {
+										"value": "@{activity('CopyData').output.copyDuration}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"Destination": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"ExecutionConfigurationId": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionConfigurationId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"ExecutionNumber": {
+									"value": {
+										"value": "@pipeline().parameters.parExecutionNumber",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"GroupPlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parGroupPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InError": {
+									"value": "Yes",
+									"type": "String"
+								},
+								"PipelineName": {
+									"value": {
+										"value": "@pipeline().parameters.parPipelineName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"PlanId": {
+									"value": {
+										"value": "@pipeline().parameters.parPlanId",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"retryNumber": {
+									"value": "1",
+									"type": "Int32"
+								},
+								"RowsCopied": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsCopied}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"RowsRead": {
+									"value": {
+										"value": "@{activity('CopyData').output.rowsRead}",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"StartExecutionDate": {
+									"value": {
+										"value": "@pipeline().parameters.parStartPipelineExecutionDate",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								},
+								"StartGroupFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StartPipelineFromExecutionOrder": {
+									"value": "0",
+									"type": "Int32"
+								},
+								"StopExecutionDate": {
+									"value": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									},
+									"type": "DateTime"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_migration",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Delete Matrix data",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_DeleteMatrixTableName]",
+							"storedProcedureParameters": {
+								"DropName": {
+									"value": {
+										"value": "@pipeline().parameters.parDropName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.parDestination",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_raw",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "CallEventgridCompeted",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Create json message pipelineParalledCompleted",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://msyspipelineparallelcompleted.westeurope-1.eventgrid.azure.net/api/events",
+							"method": "POST",
+							"headers": {
+								"aeg-sas-key": "yPXiW6fv4JUzfw3i2dPiuoDmTz50pdb5krD8FddlySc="
+							},
+							"body": {
+								"value": "@json(variables('msgPipelineParallelCompleted'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Create json message pipelineParalledCompleted",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "sp_UpdateLogEvents_OnSuccess",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "msgPipelineParallelCompleted",
+							"value": {
+								"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineParallelCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"PipelineName\":\"',pipeline().parameters.parPipelineName,'\",\"Procedure\":\"',pipeline().parameters.parProcedure,'\",\"ExecutionOrderNumber\": ',pipeline().parameters.parExecutionOrder,'},\"dataVersion\":\"1.0\"}]')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"parProcedure": {
+						"type": "string"
+					},
+					"parDestination": {
+						"type": "string"
+					},
+					"parExecutionOrder": {
+						"type": "string"
+					},
+					"parGroupName": {
+						"type": "string"
+					},
+					"parDropName": {
+						"type": "string"
+					},
+					"parExecutionConfigurationId": {
+						"type": "string"
+					},
+					"parExecutionNumber": {
+						"type": "string"
+					},
+					"parGroupPlanId": {
+						"type": "string"
+					},
+					"parPipelineName": {
+						"type": "string"
+					},
+					"parStartPipelineExecutionDate": {
+						"type": "string"
+					},
+					"parPlanId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"varDropName": {
+						"type": "String"
+					},
+					"msgPipelineParallelCompleted": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Parallel"
+				},
+				"annotations": [],
+				"lastPublishTime": "2022-12-21T11:16:41Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sqldb_raw')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sqldb_migration')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_migration",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "DropName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ExecutionConfigurationId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ExecutionNumber",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "GroupName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "GroupPlanId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "PlanId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "PipelineName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Procedure",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Destination",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ExecutionOrder",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "IsMatrix",
+						"type": "bit"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "LiveExecutionPlan"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_migration')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sqldb_my_italy_new')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_my_italy_new",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_my_italy_new')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sqldb_raw')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_raw",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"DestinationTableName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().DestinationTableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_raw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_migration')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('ls_migration_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_my_italy_new')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('ls_my_italy_new_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_raw')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('ls_raw_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerGroupA')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_GroupA",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerGroupA_properties_pl_GroupA_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "pl_GroupA",
+					"scope": "[parameters('triggerGroupA_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_GroupA')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerGroupB')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_GroupB",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerGroupB_properties_pl_GroupB_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "pl_GroupB",
+					"scope": "[parameters('triggerGroupB_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_GroupB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerGroupC')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_GroupC",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerGroupC_properties_pl_GroupC_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "pl_GroupC",
+					"scope": "[parameters('triggerGroupC_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_GroupC')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerGroupX')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_GroupX",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerGroupX_properties_pl_GroupX_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "pl_GroupX",
+					"scope": "[parameters('triggerGroupX_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_GroupX')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerGroupY')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_GroupY",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerGroupY_properties_pl_GroupY_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "pl_GroupY",
+					"scope": "[parameters('triggerGroupY_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_GroupY')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerMatrix')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_Matrix_GroupA",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerMatrix_properties_pl_Matrix_GroupA_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "pl_GroupA",
+					"subjectBeginsWith": "Matrix",
+					"scope": "[parameters('triggerMatrix_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_Matrix_GroupA')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerMatrixGroupB')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_Matrix_GroupB",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerMatrixGroupB_properties_pl_Matrix_GroupB_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "pl_GroupB",
+					"subjectBeginsWith": "Matrix",
+					"scope": "[parameters('triggerMatrixGroupB_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_Matrix_GroupB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerMatrixGroupX')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_Matrix_GroupX",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"parProcedure": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parProcedure')]",
+							"parDestination": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDestination')]",
+							"parExecutionOrder": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionOrder')]",
+							"parGroupName": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupName')]",
+							"parDropName": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parDropName')]",
+							"parExecutionConfigurationId": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionConfigurationId')]",
+							"parExecutionNumber": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parExecutionNumber')]",
+							"parGroupPlanId": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parGroupPlanId')]",
+							"parPipelineName": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPipelineName')]",
+							"parStartPipelineExecutionDate": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parStartPipelineExecutionDate')]",
+							"parPlanId": "[parameters('triggerMatrixGroupX_properties_pl_Matrix_GroupX_parameters_parPlanId')]"
+						}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "pl_GroupX",
+					"subjectBeginsWith": "Matrix",
+					"scope": "[parameters('triggerMatrixGroupX_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_Matrix_GroupX')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerParallelStop')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipelineStopParallel",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "ParallelStop",
+					"scope": "[parameters('triggerParallelStop_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipelineStopParallel')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggerStop')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipelineStop",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "CustomEventsTrigger",
+				"typeProperties": {
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "SequentialStop",
+					"scope": "[parameters('triggerStop_properties_typeProperties_scope')]",
+					"events": [
+						"pipelineInvoke"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipelineStop')]"
+			]
+		}
+	]
+}
