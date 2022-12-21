@@ -1,0 +1,9 @@
+{
+	"name": "msysprovaImportDataFactoryTemplate",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "74b547a3-71d2-44e6-9838-1beef4e53e95",
+		"tenantId": "e12fcaf6-d793-444c-8d0a-898455da76bb"
+	}
+}

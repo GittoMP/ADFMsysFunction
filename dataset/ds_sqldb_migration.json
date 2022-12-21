@@ -1,0 +1,71 @@
+{
+	"name": "ds_sqldb_migration",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_migration",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DropName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ExecutionConfigurationId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ExecutionNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GroupName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GroupPlanId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PlanId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PipelineName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Procedure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Destination",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ExecutionOrder",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsMatrix",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LiveExecutionPlan"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

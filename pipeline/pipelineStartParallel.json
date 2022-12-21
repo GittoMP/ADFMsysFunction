@@ -1,0 +1,125 @@
+{
+	"name": "pipelineStartParallel",
+	"properties": {
+		"activities": [
+			{
+				"name": "Call Start",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Create json message pipelineParallelStarted",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://msyspipelineparallelstarted.westeurope-1.eventgrid.azure.net/api/events",
+					"method": "POST",
+					"headers": {
+						"aeg-sas-key": "Cn9JDvMTyfWFqpHZVOWZIa9nbl9VJ//m8KW8z/zAWUA="
+					},
+					"body": {
+						"value": "@json(variables('msgPipelineParallelStarted'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Create json message pipelineParallelStarted",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "SP Execution Parallel Live Plan",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "msgPipelineParallelStarted",
+					"value": {
+						"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineParallelStarted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": 0},\"dataVersion\":\"1.0\"}]')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "sp_StartDate",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_StartDateParallel]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_migration",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP Execution Parallel Live Plan",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "sp_StartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_PopulateLiveParallelExecutionPlan]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_migration",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"varStartFromId": {
+				"type": "String"
+			},
+			"varRetryNumber": {
+				"type": "String"
+			},
+			"ParallelStop": {
+				"type": "String"
+			},
+			"msgPipelineParallelStarted": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Parallel"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-21T10:24:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

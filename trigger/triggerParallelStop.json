@@ -1,0 +1,24 @@
+{
+	"name": "triggerParallelStop",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipelineStopParallel",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "CustomEventsTrigger",
+		"typeProperties": {
+			"subjectEndsWith": "",
+			"subjectBeginsWith": "ParallelStop",
+			"scope": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc",
+			"events": [
+				"pipelineInvoke"
+			]
+		}
+	}
+}

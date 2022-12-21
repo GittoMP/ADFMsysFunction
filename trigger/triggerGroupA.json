@@ -1,0 +1,37 @@
+{
+	"name": "triggerGroupA",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_GroupA",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"parProcedure": "@triggerBody().event.data.Procedure",
+					"parDestination": "@triggerBody().event.data.Destination",
+					"parExecutionOrder": "@triggerBody().event.data.ExecutionOrder",
+					"parGroupName": "@triggerBody().event.data.GroupName",
+					"parDropName": "@triggerBody().event.data.DropName",
+					"parExecutionConfigurationId": "@triggerBody().event.data.ExecutionConfigurationId",
+					"parExecutionNumber": "@triggerBody().event.data.ExecutionNumber",
+					"parGroupPlanId": "@triggerBody().event.data.GroupPlanId",
+					"parPipelineName": "@triggerBody().event.data.PipelineName",
+					"parStartPipelineExecutionDate": "@triggerBody().event.data.StartPipelineExecutionDate",
+					"parPlanId": "@triggerBody().event.data.PlanId"
+				}
+			}
+		],
+		"type": "CustomEventsTrigger",
+		"typeProperties": {
+			"subjectEndsWith": "",
+			"subjectBeginsWith": "pl_GroupA",
+			"scope": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc",
+			"events": [
+				"pipelineInvoke"
+			]
+		}
+	}
+}

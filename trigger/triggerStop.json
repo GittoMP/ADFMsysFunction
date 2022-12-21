@@ -1,0 +1,24 @@
+{
+	"name": "triggerStop",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipelineStop",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "CustomEventsTrigger",
+		"typeProperties": {
+			"subjectEndsWith": "",
+			"subjectBeginsWith": "SequentialStop",
+			"scope": "/subscriptions/60aba99d-ea2b-4783-98b2-8a8c89524f0e/resourceGroups/manpowerdev/providers/Microsoft.EventGrid/topics/msyspipelineInvokePoc",
+			"events": [
+				"pipelineInvoke"
+			]
+		}
+	}
+}

@@ -1,0 +1,150 @@
+{
+	"name": "pipelineStartFrom",
+	"properties": {
+		"activities": [
+			{
+				"name": "Call Start",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Create json message pipelineCompleted",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+					"method": "POST",
+					"headers": {
+						"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+					},
+					"body": {
+						"value": "@json(variables('msgPipelineCompleted'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Create json message pipelineCompleted",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "varStartFromId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "msgPipelineCompleted",
+					"value": {
+						"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted \",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\":', variables('varStartFromId'),'},\"dataVersion\":\"1.0\"}]')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "varStartFromId",
+				"description": "Start from the id  plus 1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "sp_StartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Load Execution Parameters",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varStartFromId",
+					"value": {
+						"value": "@string(activity('Load Execution Parameters').output.firstRow.StartExecutionFrom)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "sp_StartDate",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_StartDate]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_migration",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Load Execution Parameters",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sp_LoadParameters]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb_migration",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"msgPipelineCompleted": {
+				"type": "String"
+			},
+			"varStartFromId": {
+				"type": "String"
+			},
+			"varExecutionConfigurationId": {
+				"type": "String"
+			},
+			"varDropName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Sequential"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-21T11:01:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

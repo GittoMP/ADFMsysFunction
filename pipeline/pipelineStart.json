@@ -1,0 +1,169 @@
+{
+	"name": "pipelineStart",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetLastRetryNumber",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT eh.RetryNumber as Retry \nFROM [dbo].[ExecutionConfiguration] ec\nINNER JOIN [dbo].[ExecutionHistory] eh ON ec.id = eh.ExecutionConfigurationId\nWHERE ec.ToBeExecuted = 1",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb_migration",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
+			},
+			{
+				"name": "If Retry eq 0",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "GetLastRetryNumber",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('GetLastRetryNumber').output.firstRow.Retry,0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Stored procedure create Execution Live Plan",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "sp_StartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[sp_PopulateLiveExecutionPlan]"
+							},
+							"linkedServiceName": {
+								"referenceName": "ls_migration",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Call Start",
+							"type": "WebActivity",
+							"dependsOn": [
+								{
+									"activity": "Create json message pipelineCompleted",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "https://msyspipelinecompleted.westeurope-1.eventgrid.azure.net/api/events",
+								"method": "POST",
+								"headers": {
+									"aeg-sas-key": "1kw7hQpSpaPXlTSWCcpRDDlliiSEpQWD5SWsFXLxzVw="
+								},
+								"body": {
+									"value": "@json(variables('msgPipelineCompleted'))",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Create json message pipelineCompleted",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Stored procedure create Execution Live Plan",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "msgPipelineCompleted",
+								"value": {
+									"value": "@concat('[{\"id\":\"',string(rand(1,5000000)),'\",\"eventType\":\"msyspipelineCompleted\",\"subject\":\"pipeline\",\"eventTime\":\"2021-08-10T21:03:07+00:00\",\"data\":{\"Procedure\":\"vGroupA_1\",\"Destination\":\"Group01\",\"ExecutionOrderNumber\": 0},\"dataVersion\":\"1.0\"}]')\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "sp_StartDate",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[sp_StartDate]"
+							},
+							"linkedServiceName": {
+								"referenceName": "ls_migration",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"msgPipelineCompleted": {
+				"type": "String"
+			},
+			"varStartFromId": {
+				"type": "String"
+			},
+			"varRetryNumber": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Sequential"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-21T10:24:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
